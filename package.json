@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "get-tokens": "ts-node 1click-example/1-get-tokens.ts",
-    "get-quote": "ts-node 2-quote.ts",
+    "get-quote": "ts-node 1click-example/2-get-quote.ts",
     "3:deposit": "ts-node 3-deposit.ts",
     "4:status": "ts-node 4-status.ts",
     "5:auth": "ts-node 5-auth.ts",

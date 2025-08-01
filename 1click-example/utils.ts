@@ -36,12 +36,3 @@ export function displayTokensByBlockchain(tokens: TokenResponse[]): void {
     );
   });
 }
-
-/**
- * Displays an example token response format
- */
-export function displayTokenExample(tokens: TokenResponse[]): void {
-  if (tokens.length > 0) {
-
-  }
-} 
