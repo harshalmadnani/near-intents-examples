@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "get-tokens": "ts-node 1-tokens.ts",
+    "get-tokens": "ts-node 1click-example/1-get-tokens.ts",
     "get-quote": "ts-node 2-quote.ts",
     "3:deposit": "ts-node 3-deposit.ts",
     "4:status": "ts-node 4-status.ts",

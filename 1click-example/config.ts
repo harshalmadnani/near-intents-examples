@@ -9,9 +9,3 @@ export const JWT_TOKEN = 'YOUR_JWT_TOKEN';
 
 // Set the token globally
 OpenAPI.TOKEN = JWT_TOKEN;
-
-// Alternatively, you can use a dynamic token provider for automatic token refresh:
-// OpenAPI.TOKEN = async () => {
-//     // Get a fresh token from your authentication system
-//     return "YOUR_FRESH_JWT_TOKEN";
-// };
