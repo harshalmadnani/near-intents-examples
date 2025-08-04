@@ -6,6 +6,16 @@ import { displayTokensByBlockchain } from './utils';
  *
  * This endpoint doesn't require JWT authentication.
  * It returns a list of all supported tokens across different blockchains.
+ * 
+ * API Response is in an array of available tokens format:
+ * 
+ *   {
+ *     "blockchain": "arbitrum",
+ *     "symbol": "USDC",
+ *     "assetId": "arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+ *     "contractAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+ *   }
+ * 
  */
 async function getAvailableTokens() {
   try {
