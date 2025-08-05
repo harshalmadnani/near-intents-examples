@@ -6,7 +6,7 @@
     "get-tokens": "ts-node 1click-example/1-get-tokens.ts",
     "get-quote": "ts-node 1click-example/2-get-quote.ts",
     "send-deposit": "ts-node 1click-example/3-send-deposit.ts",
-    "4:status": "ts-node 4-status.ts",
+    "check-status": "ts-node 1click-example/4-check.status.ts",
     "5:auth": "ts-node 5-auth.ts",
     "start:swap": "ts-node quote.ts"
   },
