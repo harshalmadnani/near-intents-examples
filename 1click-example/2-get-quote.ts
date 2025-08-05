@@ -28,21 +28,21 @@ try {
     // Maximum acceptable slippage as basis points (100 = 1.00%)
     slippageTolerance: 100, 
     
-    // Source token identifier in chain:contract format (ex: Arbitrum USDC bridged to NEAR)
+    // Source token identifier in chain:contract format (ex: Wrapped NEAR)
     // Use getAvailableTokens() to get the correct format or API docs to get the correct format
     originAsset: "nep141:wrap.near",
     
     // Type of deposit address:
     // - ORIGIN_CHAIN: deposit address on the origin chain
     // - INTENTS: deposit address inside of near intents (the verifier smart contract)
-    depositType: QuoteRequest.depositType.INTENTS,
+    depositType: QuoteRequest.depositType.ORIGIN_CHAIN,
     
-    // Target token identifier (ex: Solana token bridged to NEAR)
+    // Target token identifier (ex: Native ETH)
     // Use getAvailableTokens() to get the correct format or API docs to get the correct format
-    destinationAsset: "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    destinationAsset: "nep141:eth.omft.near",
     
     // Amount to swap (in token's smallest unit/decimals)
-    amount: "5000000000000000000000",
+    amount: "25000000000000000000000",
     
     // Address to receive refunds if swap fails
     refundTo: "your-account.near", 
@@ -50,15 +50,15 @@ try {
     // Type of refund address:
     // - ORIGIN_CHAIN: refund to source chain
     // - INTENTS: refund to intents account
-    refundType: QuoteRequest.refundType.INTENTS,
+    refundType: QuoteRequest.refundType.ORIGIN_CHAIN,
     
     // Final recipient address for the swapped tokens. Format should match recipientType.
-    recipient: "your-account.near", 
+    recipient: "0x898552283eAfDEF8855bB935bA119D95521eb6AD", 
     
     // Type of recipient address:
     // - DESTINATION_CHAIN: send to destination chain
     // - INTENTS: send to intents account
-    recipientType: QuoteRequest.recipientType.INTENTS,
+    recipientType: QuoteRequest.recipientType.DESTINATION_CHAIN,
     
     // Quote expiration timestamp in ISO format.
     // Swap must execute before this time (currently set to 3 minutes from now)

@@ -5,13 +5,19 @@
   "scripts": {
     "get-tokens": "ts-node 1click-example/1-get-tokens.ts",
     "get-quote": "ts-node 1click-example/2-get-quote.ts",
-    "3:deposit": "ts-node 3-deposit.ts",
+    "send-deposit": "ts-node 1click-example/3-send-deposit.ts",
     "4:status": "ts-node 4-status.ts",
     "5:auth": "ts-node 5-auth.ts",
     "start:swap": "ts-node quote.ts"
   },
   "dependencies": {
-    "@defuse-protocol/one-click-sdk-typescript": "0.1.1"
+    "@defuse-protocol/one-click-sdk-typescript": "0.1.1",
+    "@near-js/accounts": "^2.2.4",
+    "@near-js/crypto": "^2.2.4",
+    "@near-js/providers": "^2.2.4",
+    "@near-js/signers": "^2.2.4",
+    "@near-js/tokens": "^2.2.4",
+    "dotenv": "^17.2.1"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
