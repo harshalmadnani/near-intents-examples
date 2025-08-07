@@ -1,4 +1,5 @@
 import { OpenAPI, OneClickService, QuoteRequest } from '@defuse-protocol/one-click-sdk-typescript';
+import "dotenv/config";
 
 /**
  * Step 2: Get Quote
