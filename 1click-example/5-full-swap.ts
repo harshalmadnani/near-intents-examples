@@ -24,7 +24,7 @@ const senderPrivateKey = process.env.SENDER_PRIVATE_KEY as string;
 const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b' // Token swap recipient address on Arbitrum
 const originAsset = "nep141:wrap.near" // Native $NEAR
 const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near" // Native $ARB
-const amount = NEAR.toUnits("0.1").toString(); // amount in smallest unit of the input or output token depending on `swapType`
+const amount = NEAR.toUnits("0.01").toString(); // amount in smallest unit of the input or output token depending on `swapType`
 
 
 async function fullSwap() {
