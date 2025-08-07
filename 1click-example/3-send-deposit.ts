@@ -5,10 +5,14 @@ import "dotenv/config";
 /**
  * Step 3: Send Deposit to Quote Address
  *
- * This endpoint retrieves a quote for cross-chain token swaps.
- * It calculates the expected output and fees for a given swap configuration.
- * Will provide a quote and unique deposit address to send the funds to.
- *
+ *  This process sends $NEAR tokens to the `depositAddress`
+ * 
+ *  It's important to note that although this example uses $NEAR, you can send any token on any 
+ *  supported network by the 1-Click API. No NEAR account is required to use 1Click API.
+ * 
+ *  For example, if you use $ARB `assetId` as the `originAsset` in the quote, you will get an $ARB `depositAddress`
+ *  in the quote response. You can then send $ARB to this `depositAddress` on Arbitrum to execute the swap.
+ * 
  */
 
 // Configure token deposit

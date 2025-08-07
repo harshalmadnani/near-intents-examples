@@ -57,6 +57,9 @@ A comprehensive tutorial demonstrating cross-chain token swaps with [**NEAR Inte
 
 ## 📚 Tutorial Steps
 
+Open each file _before_ executing it using the guide below. Each file has detailed comments that further educates you
+about each step. Some files also have configuration options for you to alter and experiment with. 
+
 ### Step 1: Get Available Tokens
 
 ```bash
