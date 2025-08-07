@@ -9,15 +9,6 @@ import { OpenAPI, OneClickService, QuoteRequest } from '@defuse-protocol/one-cli
  * 
  */
 
-// Example Asset IDs (use getTokens for full list)
-const NATIVE_NEAR = "nep141:wrap.near"
-const NEAR_USDC = "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1"
-const NEAR_ETH = "nep141:eth.bridge.near"
-
-const NATIVE_SOL = "nep141:sol.omft.near"
-const NATIVE_ETH = "nep141:eth.omft.near"
-const NATIVE_ARB = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near"
-
 // Initialize the API client
 OpenAPI.BASE = 'https://1click.chaindefuser.com';
 
@@ -25,8 +16,12 @@ OpenAPI.BASE = 'https://1click.chaindefuser.com';
 // Request one here -> https://docs.google.com/forms/d/e/1FAIpQLSdrSrqSkKOMb_a8XhwF0f7N5xZ0Y5CYgyzxiAuoC2g4a2N68g/viewform
 OpenAPI.TOKEN = process.env.ONE_CLICK_JWT;
 
+// Example Asset IDs (use getTokens for full list)
+const NATIVE_NEAR = "nep141:wrap.near"
+const NATIVE_ARB = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near"
+
 // Example Swap Configuration
-const dry = false // set to true for quote estimation / testing, false for actual execution
+const isTest = true // set to true for quote estimation / testing, false for actual execution
 const senderAddress = 'your-account.near'
 const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b'
 const originAsset = NATIVE_NEAR
@@ -34,7 +29,7 @@ const destinationAsset = NATIVE_ARB
 const amount = "100000000000000000000000"
 
 
-async function getQuote() {
+export async function getQuote(dry: boolean, senderAddress: string, recipientAddress: string, originAsset: string, destinationAsset: string, amount: string) {
 try {
     const quoteRequest: QuoteRequest = {
     // Testing Mode : set to true for quote estimation / testing, false for actual execution
@@ -100,11 +95,16 @@ try {
 };
 
     const quote = await OneClickService.getQuote(quoteRequest);
-    console.log("Authenticated getQuote RESPONSE:", quote);
+    return quote;
   } catch (error) {
     console.error('Error fetching quote:', error);
     throw error;
   }
 }
 
-getQuote().catch(console.error);
+// Only run if this file is executed directly
+if (require.main === module) {
+  getQuote(isTest, senderAddress, recipientAddress, originAsset, destinationAsset, amount)
+    .then(result => console.log("\n\nAuthenticated getQuote RESPONSE:", result))
+    .catch(console.error);
+}

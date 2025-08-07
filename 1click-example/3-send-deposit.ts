@@ -16,7 +16,7 @@ const senderPrivateKey = process.env.SENDER_PRIVATE_KEY as string;
 const depositAmount = "100000000000000000000000";
 export const depositAddress = "78358c22d3add57c56689647acc3a821e314e972585f87aedc6307087cae74b8";
 
-async function sendTokens(
+export async function sendTokens(
   senderAccount: string,
   senderPrivateKey: string,
   depositAddress: string,
@@ -30,16 +30,22 @@ async function sendTokens(
       receiverId: depositAddress as string,
     });
 
-    console.log("Deposit sent!");
-    console.log(`See transaction: https://nearblocks.io/txns/${result.transaction.hash}`);
+
+    return result;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }
 
-sendTokens(
-  senderAccount,
-  senderPrivateKey,
-  depositAddress,
-  depositAmount
-).catch(console.error);
+// Only run if this file is executed directly
+if (require.main === module) {
+  sendTokens(
+    senderAccount,
+    senderPrivateKey,
+    depositAddress,
+    depositAmount
+  ) 
+    .then(result => console.log(`\nDeposit sent! \n See transaction: https://nearblocks.io/txns/${result.transaction.hash}`))
+    .catch(console.error);
+}
