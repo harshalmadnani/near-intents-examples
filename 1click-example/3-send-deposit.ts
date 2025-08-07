@@ -1,35 +1,45 @@
-// Import NEAR JS Libraries
-// See docs for more information: https://docs.near.org/tools/near-api
-import { KeyPairSigner } from '@near-js/signers';
-import { KeyPairString } from '@near-js/crypto';
-import { JsonRpcProvider, Provider } from '@near-js/providers';
-import { Account } from '@near-js/accounts';
-import { NEAR } from '@near-js/tokens';
-import 'dotenv/config';
+import { getAccount } from "./near";
+import { NEAR } from "@near-js/tokens";
+import "dotenv/config";
 
+/**
+ * Step 3: Send Deposit to Quote Address
+ *
+ * This endpoint retrieves a quote for cross-chain token swaps.
+ * It calculates the expected output and fees for a given swap configuration.
+ * Will provide a quote and unique deposit address to send the funds to.
+ *
+ */
 
-// Create signer from private key in .env file
-const signer = KeyPairSigner.fromSecretKey(process.env.PRIVATE_KEY as KeyPairString);
+const senderAccount = "your-account.near";
+const senderPrivateKey = process.env.SENDER_PRIVATE_KEY as string;
+const depositAmount = "100000000000000000000000";
+export const depositAddress = "78358c22d3add57c56689647acc3a821e314e972585f87aedc6307087cae74b8";
 
-// Create provider for RPC connection to NEAR Blockchain
-const provider = new JsonRpcProvider({ url: 'https://rpc.fastnear.com' });
-
-// Instantiate NEAR Account to perform transactions
-const account = new Account( process.env.NEAR_ACCOUNT as string, provider as Provider, signer);
-
-async function sendDeposit() {
+async function sendTokens(
+  senderAccount: string,
+  senderPrivateKey: string,
+  depositAddress: string,
+  depositAmount: string
+) {
   try {
+    const account = await getAccount(senderAccount, senderPrivateKey);
     const result = await account.transfer({
       token: NEAR,
-      amount: NEAR.toUnits(process.env.DEPOSIT_AMOUNT as string),
-      receiverId: process.env.DEPOSIT_ADDRESS as string,
+      amount: depositAmount,
+      receiverId: depositAddress as string,
     });
 
-    console.log('Deposit sent!');
-    console.log( `See transaction: https://nearblocks.io/txns/${result.transaction.hash}`);
+    console.log("Deposit sent!");
+    console.log(`See transaction: https://nearblocks.io/txns/${result.transaction.hash}`);
   } catch (error) {
     console.error(error);
   }
 }
 
-sendDeposit().catch(console.error);
+sendTokens(
+  senderAccount,
+  senderPrivateKey,
+  depositAddress,
+  depositAmount
+).catch(console.error);

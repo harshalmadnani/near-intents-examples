@@ -1,8 +1,6 @@
 import { TokenResponse } from '@defuse-protocol/one-click-sdk-typescript';
 
-/**
- * Groups tokens by blockchain
- */
+// Groups tokens by blockchain
 export function groupTokensByBlockchain(tokens: TokenResponse[]): Record<string, TokenResponse[]> {
   return tokens.reduce((acc, token) => {
     if (!acc[token.blockchain]) {
@@ -13,9 +11,7 @@ export function groupTokensByBlockchain(tokens: TokenResponse[]): Record<string,
   }, {} as Record<string, TokenResponse[]>);
 }
 
-/**
- * Displays tokens grouped by blockchain in a formatted table
- */
+// Displays tokens grouped by chain in a formatted table
 export function displayTokensByBlockchain(tokens: TokenResponse[]): void {
   const tokensByBlockchain = groupTokensByBlockchain(tokens);
   const sortedBlockchains = Object.keys(tokensByBlockchain).sort();
@@ -30,8 +26,8 @@ export function displayTokensByBlockchain(tokens: TokenResponse[]): void {
     console.table(
       sortedTokens.map((token) => ({
         Symbol: token.symbol,
+        Price: token.price || 'N/A',
         'Asset ID': token.assetId || 'N/A',
-        'Contract Address': token.contractAddress || 'N/A',
       }))
     );
   });

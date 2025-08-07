@@ -13,7 +13,7 @@ importers:
         version: 0.1.1
       '@near-js/accounts':
         specifier: ^2.2.4
-        version: 2.2.4(syq6agnbxllc4e4keakh7ev47u)
+        version: 2.2.4(464cb30055368cfc37f2936110135417)
       '@near-js/crypto':
         specifier: ^2.2.4
         version: 2.2.4(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4))
@@ -30,9 +30,12 @@ importers:
         specifier: ^17.2.1
         version: 17.2.1
     devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.9
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@24.1.0)(typescript@5.9.2)
+        version: 10.9.2(@types/node@20.19.9)(typescript@5.9.2)
       typescript:
         specifier: ^5.4.2
         version: 5.9.2
@@ -139,8 +142,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@24.1.0':
-    resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
+  '@types/node@20.19.9':
+    resolution: {integrity: sha512-cuVNgarYWZqxRJDQHEB58GEONhOK79QVR/qYx4S7kcUObQvUwvFnYxJuuHUKm2aieN9X3yZB4LZsuYNU1Qphsw==}
 
   acorn-walk@8.3.4:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
@@ -373,8 +376,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@7.8.0:
-    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
@@ -415,7 +418,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
-  '@near-js/accounts@2.2.4(syq6agnbxllc4e4keakh7ev47u)':
+  '@near-js/accounts@2.2.4(464cb30055368cfc37f2936110135417)':
     dependencies:
       '@near-js/crypto': 2.2.4(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4))
       '@near-js/providers': 2.2.4(@near-js/crypto@2.2.4(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4)))(@near-js/transactions@2.2.4(@near-js/crypto@2.2.4(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4)))(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4)))(@near-js/types@2.2.4)(@near-js/utils@2.2.4(@near-js/types@2.2.4))
@@ -503,9 +506,9 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@24.1.0':
+  '@types/node@20.19.9':
     dependencies:
-      undici-types: 7.8.0
+      undici-types: 6.21.0
 
   acorn-walk@8.3.4:
     dependencies:
@@ -708,14 +711,14 @@ snapshots:
   tr46@0.0.3:
     optional: true
 
-  ts-node@10.9.2(@types/node@24.1.0)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@20.19.9)(typescript@5.9.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 24.1.0
+      '@types/node': 20.19.9
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -728,7 +731,7 @@ snapshots:
 
   typescript@5.9.2: {}
 
-  undici-types@7.8.0: {}
+  undici-types@6.21.0: {}
 
   v8-compile-cache-lib@3.0.1: {}
 

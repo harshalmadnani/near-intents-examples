@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "get-tokens": "ts-node 1click-example/1-get-tokens.ts",
-    "get-quote": "ts-node 1click-example/2-get-quote.ts",
-    "send-deposit": "ts-node 1click-example/3-send-deposit.ts",
-    "check-status": "ts-node 1click-example/4-check.status.ts",
-    "5:auth": "ts-node 5-auth.ts",
-    "start:swap": "ts-node quote.ts"
+    "getTokens": "ts-node 1click-example/1-get-tokens.ts",
+    "getQuote": "ts-node 1click-example/2-get-quote.ts",
+    "sendDeposit": "ts-node 1click-example/3-send-deposit.ts",
+    "checkStatus": "ts-node 1click-example/4-check.status.ts"
   },
   "dependencies": {
     "@defuse-protocol/one-click-sdk-typescript": "0.1.1",
@@ -20,6 +18,7 @@
     "dotenv": "^17.2.1"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   }

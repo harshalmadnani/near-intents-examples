@@ -2,13 +2,12 @@ import { OneClickService } from '@defuse-protocol/one-click-sdk-typescript';
 import { displayTokensByBlockchain } from './utils';
 
 /**
- * Step 1: Get Available Tokens
+ *  Step 1: Get Available Tokens
  *
- * This endpoint doesn't require JWT authentication.
- * It returns a list of all supported tokens across different blockchains.
+ *  This endpoint doesn't require JWT authentication.
+ *  It returns a list of all supported tokens across different blockchains.
  * 
- * API Response is in an array of available tokens format:
- * 
+ *  API Response is in an array of available tokens in the following format:
  *   {
  *     "blockchain": "arbitrum",
  *     "symbol": "USDC",
