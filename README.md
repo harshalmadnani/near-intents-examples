@@ -12,8 +12,8 @@ A comprehensive tutorial demonstrating cross-chain token swaps with [**NEAR Inte
 ## Prerequisites
 
 - [pnpm >= 8](https://pnpm.io/)
-- Node.js >=16
-- TypeScript
+- [Node.js >=16](https://nodejs.org/en)
+- [TypeScript](https://www.typescriptlang.org/)
 - NEAR account with sufficient balance (~0.05 $NEAR)
 - 1-Click SDK JWT token -> [Request here](https://docs.google.com/forms/d/e/1FAIpQLSdrSrqSkKOMb_a8XhwF0f7N5xZ0Y5CYgyzxiAuoC2g4a2N68g/viewform)
 
@@ -27,7 +27,8 @@ A comprehensive tutorial demonstrating cross-chain token swaps with [**NEAR Inte
    ```
 
 2. **Environment Setup**
-   Create a `.env` file with your private credentials: _(see .env.example)_
+
+   Create a `.env` file with your private credentials _(see [.env.example](.env.example))_:
 
    ```env
    SENDER_NEAR_ACCOUNT=your-account.near
