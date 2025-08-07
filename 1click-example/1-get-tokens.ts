@@ -16,6 +16,7 @@ import { displayTokensByBlockchain } from './utils';
  *   }
  * 
  */
+
 async function getAvailableTokens() {
   try {
     console.log('Fetching available tokens...');

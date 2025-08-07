@@ -1,4 +1,5 @@
-import { OpenAPI, OneClickService, QuoteRequest } from '@defuse-protocol/one-click-sdk-typescript';
+import { OpenAPI, OneClickService, QuoteRequest, ApiError } from '@defuse-protocol/one-click-sdk-typescript';
+import { NEAR } from '@near-js/tokens';
 import "dotenv/config";
 
 /**
@@ -16,7 +17,7 @@ const senderAddress = process.env.SENDER_NEAR_ACCOUNT as string;  // Configure i
 const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b';  // Token swap recipient address on Arbitrum
 const originAsset = "nep141:wrap.near";  // Native $NEAR
 const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near";  // Native $ARB
-const amount = "100000000000000000000000";  // 0.1 $NEAR
+const amount = NEAR.toUnits("0.5").toString();
 
 // Initialize the API client
 OpenAPI.BASE = 'https://1click.chaindefuser.com';

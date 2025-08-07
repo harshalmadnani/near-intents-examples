@@ -1,4 +1,4 @@
-import { TokenResponse } from '@defuse-protocol/one-click-sdk-typescript';
+import { TokenResponse, QuoteResponse } from '@defuse-protocol/one-click-sdk-typescript';
 
 // Groups tokens by blockchain
 export function groupTokensByBlockchain(tokens: TokenResponse[]): Record<string, TokenResponse[]> {
@@ -32,3 +32,21 @@ export function displayTokensByBlockchain(tokens: TokenResponse[]): void {
     );
   });
 }
+
+export function displaySwapCostTable(quote: QuoteResponse) {
+  const amountInUsd = Number(quote.quote?.amountInUsd) || 0;
+  const amountOutUsd = Number(quote.quote?.amountOutUsd) || 0;
+  const swapCost = (amountInUsd - amountOutUsd).toFixed(4);
+  
+  console.log(`
+┌─────────────────────┬──────────────┐
+│ Swap Cost Breakdown │ USD Value    │
+├─────────────────────┼──────────────┤
+│ Amount In           │ $${amountInUsd.toFixed(4).padStart(10)}  │
+│ Amount Out          │ $${amountOutUsd.toFixed(4).padStart(10)}  │
+│ ─────────────────── │ ──────────── │
+│ Total Swap Cost     │ $${swapCost.padStart(10)}  │
+└─────────────────────┴──────────────┘
+`);
+}
+
