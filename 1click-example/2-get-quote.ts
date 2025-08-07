@@ -9,25 +9,20 @@ import { OpenAPI, OneClickService, QuoteRequest } from '@defuse-protocol/one-cli
  * 
  */
 
+// Example Swap Configuration
+const isTest = true;  // set to true for quote estimation / testing, false for actual execution
+const senderAddress = process.env.SENDER_NEAR_ACCOUNT as string;  // Configure in .env
+const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b';  // Token swap recipient address on Arbitrum
+const originAsset = "nep141:wrap.near";  // Native $NEAR
+const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near";  // Native $ARB
+const amount = "100000000000000000000000";  // 0.1 $NEAR
+
 // Initialize the API client
 OpenAPI.BASE = 'https://1click.chaindefuser.com';
 
 // Configure your JSON Web Token (JWT) required for most endpoints
 // Request one here -> https://docs.google.com/forms/d/e/1FAIpQLSdrSrqSkKOMb_a8XhwF0f7N5xZ0Y5CYgyzxiAuoC2g4a2N68g/viewform
 OpenAPI.TOKEN = process.env.ONE_CLICK_JWT;
-
-// Example Asset IDs (use getTokens for full list)
-const NATIVE_NEAR = "nep141:wrap.near"
-const NATIVE_ARB = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near"
-
-// Example Swap Configuration
-const isTest = true // set to true for quote estimation / testing, false for actual execution
-const senderAddress = 'your-account.near'
-const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b'
-const originAsset = NATIVE_NEAR
-const destinationAsset = NATIVE_ARB
-const amount = "100000000000000000000000"
-
 
 export async function getQuote(dry: boolean, senderAddress: string, recipientAddress: string, originAsset: string, destinationAsset: string, amount: string) {
 try {

@@ -5,7 +5,8 @@ import { depositAddress } from './3-send-deposit';
  * Step 4: Check status of Intent
  *
  * This endpoint checks the status of an intent after deposit is sent
- *
+ * Logic has been added here to continue polling until the intent is fulfilled or refunded
+ * 
  */
 
 export async function checkStatus(depositAddress: string) {
@@ -39,8 +40,7 @@ export async function pollStatusUntilSuccess(depositAddress: string) {
                 console.log(`❌ Swap failed with status: ${status}`);
                 return statusResponse;
             }
-            
-            console.log("⏳ Waiting 5 seconds before next check...");
+
             await new Promise(resolve => setTimeout(resolve, 5000));
             
         } catch (error) {
