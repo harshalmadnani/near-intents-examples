@@ -20,6 +20,8 @@ import { displayTokensByBlockchain } from './utils';
 async function getAvailableTokens() {
   try {
     console.log('Fetching available tokens...');
+
+    // Fetch supported tokens from 1-Click API `/tokens` endpoint
     const tokens = await OneClickService.getTokens();
 
     console.log(`Found ${tokens.length} available tokens:\n`);

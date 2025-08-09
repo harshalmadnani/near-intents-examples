@@ -2,10 +2,10 @@ import { OneClickService} from '@defuse-protocol/one-click-sdk-typescript';
 import { depositAddress } from './3-send-deposit';
 
 /**
- * Step 4: Check status of Intent
+ *  Step 4: Check status of Intent
  *
- * This endpoint checks the status of an intent after deposit is sent
- * Logic has been added here to continue polling until the intent is fulfilled or refunded
+ *  This endpoint checks the status of an intent after deposit is sent
+ *  Logic has been added here to continue polling until the intent is fulfilled or refunded
  * 
  */
 
@@ -25,6 +25,7 @@ export async function pollStatusUntilSuccess(depositAddress: string) {
     
     while (true) {
         try {
+            // Fetch status from 1-Click API `/status` endpoint
             const statusResponse = await OneClickService.getExecutionStatus(depositAddress);
             const status = statusResponse.status;
             

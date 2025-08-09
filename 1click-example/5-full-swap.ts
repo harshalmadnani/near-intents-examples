@@ -7,14 +7,14 @@ import { NEAR } from '@near-js/tokens';
 import "dotenv/config";
 
 /**
- * Step 5: Full Swap Implementation
+ *  Step 5: Full Swap Implementation
  *
- * This combines steps 2, 3, and 4:
- * 1. Get a quote with deposit address
- * 2. Send deposit to the quote's deposit address
- * 3. Check the status of the swap
+ *  This combines steps 2, 3, and 4:
+ *   1. Get a quote with deposit address
+ *   2. Send deposit to the quote's deposit address
+ *   3. Check the status of the swap
  * 
- * NOTE: Configure this file independently of the other files in this directory
+ *  NOTE: Configure this file independently of the other files in this directory
  */
 
 // Example Swap Configuration

@@ -3,11 +3,11 @@ import { NEAR } from '@near-js/tokens';
 import "dotenv/config";
 
 /**
- * Step 2: Get Quote
+ *  Step 2: Get Quote
  *
- * This endpoint retrieves a quote for cross-chain token swaps.
- * It calculates the expected output and fees for a given swap configuration.
- * Will provide a quote and unique deposit address to send the funds to.
+ *  This endpoint retrieves a quote for cross-chain token swaps.
+ *  It calculates the expected output and fees for a given swap configuration.
+ *  Will provide a quote and unique deposit address to send the funds to.
  * 
  */
 
@@ -91,6 +91,7 @@ try {
     quoteWaitingTimeMs: 3000,
 };
 
+    // Fetch quote from 1-Click API `/quote` endpoint
     const quote = await OneClickService.getQuote(quoteRequest);
     return quote;
   } catch (error) {

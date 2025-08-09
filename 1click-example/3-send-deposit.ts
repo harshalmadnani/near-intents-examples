@@ -3,7 +3,7 @@ import { NEAR } from "@near-js/tokens";
 import "dotenv/config";
 
 /**
- * Step 3: Send Deposit to Quote Address
+ *  Step 3: Send Deposit to Quote Address
  *
  *  This process sends $NEAR tokens to the `depositAddress`
  * 
