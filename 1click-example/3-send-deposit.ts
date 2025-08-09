@@ -18,8 +18,8 @@ import "dotenv/config";
 // Configure token deposit
 const senderAccount = process.env.SENDER_NEAR_ACCOUNT as string;
 const senderPrivateKey = process.env.SENDER_PRIVATE_KEY as string;
-const depositAmount = "100000000000000000000000"; // 0.1 $NEAR
-export const depositAddress = "78358c22d3add57c56689647acc3a821e314e972585f87aedc6307087cae74b8"; // deposit address from getQuote
+const depositAmount = NEAR.toUnits("0.001").toString();
+export const depositAddress = "84e2dc2b3a7d866c6e8fead3dfd296bc9e6abcf8eeec295e8c29b099bf21fbc7"; // deposit address from getQuote
 
 export async function sendTokens(
   senderAccount: string,
