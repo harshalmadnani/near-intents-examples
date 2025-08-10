@@ -12,19 +12,19 @@ import "dotenv/config";
  */
 
 // Example Swap Configuration
-const isTest = true;  // set to true for quote estimation / testing, false for actual execution
-const senderAddress = process.env.SENDER_NEAR_ACCOUNT as string;  // Configure in .env
-const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b';  // Token swap recipient address on Arbitrum
-const originAsset = "nep141:wrap.near";  // Native $NEAR
-const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near";  // Native $ARB
-const amount = NEAR.toUnits("0.5").toString();
+const isTest = false;  // set to true for quote estimation / testing, false for actual execution
+const senderAddress = "0x6dd0d673c0c434839a344328b4cdcff53a53fb9b";  // Configure in .env
+const recipientAddress = 'greenvest1479.near';  // Token swap recipient address on Arbitrum
+const originAsset = "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near";  // Native $NEAR
+const destinationAsset = "nep141:wrap.near";  // Native $ARB
+const amount = "1000000";
 
 // Initialize the API client
 OpenAPI.BASE = 'https://1click.chaindefuser.com';
 
 // Configure your JSON Web Token (JWT) required for most endpoints
 // Request one here -> https://docs.google.com/forms/d/e/1FAIpQLSdrSrqSkKOMb_a8XhwF0f7N5xZ0Y5CYgyzxiAuoC2g4a2N68g/viewform
-OpenAPI.TOKEN = process.env.ONE_CLICK_JWT;
+
 
 export async function getQuote(dry: boolean, senderAddress: string, recipientAddress: string, originAsset: string, destinationAsset: string, amount: string) {
 try {

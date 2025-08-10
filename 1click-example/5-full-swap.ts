@@ -1,9 +1,8 @@
 import { ApiError } from '@defuse-protocol/one-click-sdk-typescript';
 import { getQuote } from './2-get-quote';
-import { sendTokens } from './3-send-deposit';
+import { sendEVMTokens, TOKEN_ADDRESSES, RPC_URLS } from './3-send-evm-deposit';
 import { pollStatusUntilSuccess } from './4-check-status';
 import { displaySwapCostTable } from './utils';
-import { NEAR } from '@near-js/tokens';
 import "dotenv/config";
 
 /**
@@ -17,14 +16,16 @@ import "dotenv/config";
  *  NOTE: Configure this file independently of the other files in this directory
  */
 
-// Example Swap Configuration
+// Example Swap Configuration - Base USDC to Arbitrum ARB
 const isTest = false; // keep set to false for actual execution
-const senderAddress = process.env.SENDER_NEAR_ACCOUNT as string;
-const senderPrivateKey = process.env.SENDER_PRIVATE_KEY as string; 
-const recipientAddress = '0x553e771500f2d7529079918F93d86C0a845B540b' // Token swap recipient address on Arbitrum
-const originAsset = "nep141:wrap.near" // Native $NEAR
-const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near" // Native $ARB
-const amount = NEAR.toUnits("0.01").toString(); // amount in smallest unit of the input or output token depending on `swapType`
+const senderAddress = process.env.SENDER_ADDRESS || "0x0000000000000000000000000000000000000000";
+const senderPrivateKey = process.env.SENDER_PRIVATE_KEY || "0x0000000000000000000000000000000000000000000000000000000000000000"; 
+const recipientAddress = process.env.RECIPIENT_ADDRESS || "0x0000000000000000000000000000000000000000"; // Token swap recipient address on Arbitrum
+const originAsset = "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near" // Base USDC
+const destinationAsset = "nep141:arb-0x912ce59144191c1204e64559fe8253a0e49e6548.omft.near" // Arbitrum ARB
+const amount = "1000000"; // 1 USDC (6 decimals)
+const tokenAddress = TOKEN_ADDRESSES.BASE.USDC; // USDC contract address on Base
+const rpcUrl = RPC_URLS.BASE; // Base mainnet RPC
 
 
 async function fullSwap() {
@@ -42,18 +43,27 @@ async function fullSwap() {
       throw new Error("No deposit address found in quote response");
     }
     
-    console.log(`💬 - Quote: ${quote.quote?.amountInFormatted} NEAR → ${quote.quote?.amountOutFormatted} ARB`);
+    console.log(`💬 - Quote: ${quote.quote?.amountInFormatted} USDC → ${quote.quote?.amountOutFormatted} ARB`);
     console.log(`🎯 - Deposit address: ${depositAddress}`);
     
     // Display swap cost breakdown table
     displaySwapCostTable(quote);
 
-    // Step 2: Send deposit
-    console.log("Step 2: Sending deposit...");
+    // Step 2: Send EVM deposit
+    console.log("Step 2: Sending EVM deposit...");
     console.log("--------------------------------");
-    const depositResult = await sendTokens(senderAddress, senderPrivateKey, depositAddress, amount);
-    console.log("✅ - Deposit sent successfully!");
-    console.log(`🔍 - See transaction: https://nearblocks.io/txns/${depositResult.transaction.hash}\n\n`);
+    
+    // Convert amount to human readable format for EVM transaction (1 USDC)
+    const depositAmount = "1"; // 1 USDC
+    const depositResult = await sendEVMTokens(
+      senderPrivateKey,
+      depositAddress,
+      tokenAddress,
+      depositAmount,
+      rpcUrl
+    );
+    console.log("✅ - EVM deposit sent successfully!");
+    console.log(`🔍 - See transaction: https://basescan.org/tx/${depositResult.hash}\n\n`);
     
     // Step 3: Poll status until success
     console.log("Step 3: Monitoring swap status...");

@@ -54,5 +54,5 @@ export async function pollStatusUntilSuccess(depositAddress: string) {
 
 // Only run if this file is executed directly
 if (require.main === module) {
-    checkStatus(depositAddress);
+    checkStatus("0xC1CCbF7DcC4Ce522B8c55a09fB20e020DfC49071");
 }
